@@ -1,4 +1,4 @@
-public class Triangle {
+public class Triangle extends Shape{
     private final double a;
     private final double b;
     private final double c;
@@ -33,11 +33,22 @@ public class Triangle {
     }
 
     public double getArea() {
-        double s = getPiremeter() / 2;
+        double s = (a + b + c) / 2;
         return Math.sqrt(s * (s - a) * (s - b) * (s - c));
     }
 
     public double getPiremeter() {
+        return a + b + c;
+    }
+
+    @Override
+    public double area() {
+        double s = (a + b + c) / 2;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    @Override
+    public double perimeter() {
         return a + b + c;
     }
 
@@ -69,6 +80,19 @@ public class Triangle {
         System.out.println(t1.equals(t2));
         System.out.println(t1);
         System.out.println(t2);
+
+
+        Shape[] arr = new Shape[4];
+        arr[0] = new Rectangle(2,3);
+        arr[1] = new Rectangle(3,6);
+        arr[2]  = new Triangle(3,4,5);
+        arr[3]  = new Triangle(6,6,6);
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+
+
     }
 
 }
